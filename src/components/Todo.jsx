@@ -36,22 +36,23 @@ const Todo = (props) => {
                             color='black' 
                             className='icon icon-calendar'
                             onClick={ () => { dateRef.current.focus(); dateRef.current.showPicker(); } }
-                        /> 
+                        />
 
                     :  <AiOutlineCalendar 
                             size={25} 
                             color='white' 
                             className='icon icon-calendar'
                             onClick={ () => { dateRef.current.focus(); dateRef.current.showPicker(); } }
-                        /> 
+                        />
                     }
 
                     <input 
                     onChange={ (event) => updateDate( event.currentTarget.value ) }
                       ref={dateRef} 
-                      style={ {width: '0px', opacity: 0, position: 'absolute'} } 
+                      style={ {width: '0px', opacity: 0, position: 'relative', left: '-20px'} } 
                       type='date'
                     />
+
                     <span>{ date.toLocaleDateString() }</span>
                 </div>
             </div>

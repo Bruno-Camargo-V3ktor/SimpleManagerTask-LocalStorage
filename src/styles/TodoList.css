@@ -69,4 +69,5 @@
     justify-content: flex-start;
     align-items: flex-start;
     overflow-y: auto;
+    overflow-x: hidden;
 }
