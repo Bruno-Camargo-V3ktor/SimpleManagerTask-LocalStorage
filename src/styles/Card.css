@@ -1,0 +1,22 @@
+
+.CardContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    min-width: 455px;
+    min-height: 614px;
+
+    width: 33.32vw;
+    height: 80vh;
+
+    background-color: black;
+    border: solid white 3px;
+    border-radius: 5px;
+}
+
+.CardBodyContainer {
+    margin: 30px 25px 0px 25px;
+    display: flex;
+    flex: 1;
+}

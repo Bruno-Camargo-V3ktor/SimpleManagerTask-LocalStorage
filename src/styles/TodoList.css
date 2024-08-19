@@ -1,0 +1,72 @@
+.TodoListContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1;
+}
+
+.BtnAddContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.inputTaskName {
+    height: 30px;
+    width: 100%;
+    margin-right: 30px;
+
+    outline: none;
+    border: none;
+    border-bottom: solid white 1px;
+
+    background-color: black;
+    color: white;
+
+    font-family: Hanken Grotesk;
+    font-style: italic;
+    font-size: 17px;
+    font-weight: bold;
+    
+    transition: border-bottom 0.1s;
+}
+
+.inputTaskName:focus {
+    border-bottom: solid white 3px;
+}
+
+.btnAddTask {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 51px;
+    min-height: 51px;
+    max-width: 51px;
+    max-height: 51px;
+
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    
+    scale: 1;
+    cursor: pointer;
+    transition: scale 0.3s;
+}
+
+.btnAddTask:hover  {
+    scale: 1.25;
+}
+
+.ListContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    margin-top: 50px;
+
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: auto;
+}
