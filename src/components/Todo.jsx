@@ -16,7 +16,7 @@ const Todo = (props) => {
     //Métodos
     function updateDate(time) {
         const [year, month, day] = time.split('-');
-        setDate( new Date( `${year}-${month}-${ Number.parseInt(day) + 1}` ) )
+        setDate( new Date( `${year}-${month}-${day}T12:01:00` ) )
     }
 
     //Render

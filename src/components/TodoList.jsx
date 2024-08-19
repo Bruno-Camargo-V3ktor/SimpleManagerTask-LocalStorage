@@ -27,7 +27,6 @@ const TodoList = (props) => {
 
         console.log(name);
         
-
         const t = [...todos]
         t.push( {title: name, id: t.length} )
 
