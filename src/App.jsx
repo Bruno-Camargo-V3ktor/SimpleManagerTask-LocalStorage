@@ -3,10 +3,13 @@ import './styles/App.css'
 
 import Card from './components/Card';
 import TodoList from './components/TodoList';
+import Modal from './components/Modal';
 
 function App() {
   return (
     <div className="App">
+
+      <Modal />
 
       {/* <img 
         src={commingSoon} 
