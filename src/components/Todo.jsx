@@ -12,8 +12,16 @@ const Todo = (props) => {
     //States
     const [isDone, setIsDone] = useState( done );
     const [targetDate, setTargetDate] = useState( date );
+    const [isDestroy, setIsDestroy] = useState( false );
 
     //Métodos
+    function onDestroy() {
+      setIsDestroy(true)
+      setTimeout(() => {
+        props.onDeleteTodo(id)
+      }, 300);
+    }
+
     function updateDate(time) {
       const [year, month, day] = time.split('-');
       const newDate = new Date( `${year}-${month}-${day}T12:01:00` )
@@ -22,13 +30,18 @@ const Todo = (props) => {
     }
 
     function updateIsDone(_done) {
+
       setIsDone(_done)
       props.onUpdateTodo( {title, id, done: _done, date: targetDate} )
     }
 
+    function getClassesTodo() {
+      return 'Todo'.concat( `${ isDone ? ' done' : '' }`, `${ isDestroy ? ' destroy' : '' }`)
+    }
+
     //Render
     return (
-        <div className={ isDone ? 'Todo done' : 'Todo'  } >
+        <div className={ getClassesTodo() } >
 
             <div className='titleContainer '>
                 <h2>{title}</h2>
@@ -72,7 +85,7 @@ const Todo = (props) => {
                     />
 
                     <AiFillDelete className='icon icon-delete' color='black' size={25} 
-                      onClick={ () => { props.onDeleteTodo(id) } }
+                      onClick={ onDestroy }
                     />
                 </div>
 
@@ -82,7 +95,7 @@ const Todo = (props) => {
                     />
 
                     <AiOutlineDelete className='icon icon-delete' color='white' size={25} 
-                      onClick={ () => { props.onDeleteTodo(id) } }
+                      onClick={ onDestroy }
                     />
                 </div>
             }
