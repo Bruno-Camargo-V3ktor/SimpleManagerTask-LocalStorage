@@ -15,6 +15,8 @@ const Todo = (props) => {
     const [isDestroy, setIsDestroy] = useState( false );
     const [todoClasses, setTodoClasses] = useState( ['entered'] )
 
+    console.log( title + " -- " + todoClasses);
+
     //Métodos
     function onDestroy() {
       setIsDestroy(true)
@@ -25,23 +27,20 @@ const Todo = (props) => {
 
     function updateDate(time) {
       const [year, month, day] = time.split('-');
-      const newDate = new Date( `${year}-${month}-${day}T12:01:00` )
+      const newDate = new Date( `${year}-${month}-${day}T12:00:00` )
       setTargetDate( newDate )
       props.onUpdateTodo( {title, id, done: isDone, date: newDate} )
     }
 
     function updateIsDone(_done) {
 
-      setTimeout(() => {
-        setTodoClasses( ['entered'] )  
-      }, 100);
+      setTodoClasses( ['hide'] )  
 
       setTimeout(() => {
-        setTodoClasses( [] )
         props.onUpdateTodo( {title, id, done: _done, date: targetDate} )
       }, 400);
-
-      setIsDone(_done)
+      
+      //props.onUpdateTodo( {title, id, done: _done, date: targetDate} )
     }
 
     function getClassesTodo() {
@@ -55,7 +54,6 @@ const Todo = (props) => {
     // Effect
     useEffect( () => {
       setTodoClasses( [] )
-        console.log("Effect");
         
     }, [setTodoClasses] )
 

@@ -86,6 +86,10 @@
 }
 
 
-.ListUnfinished:last-child {
+.ListUnfinished {
     margin-bottom: 50px;
+}
+
+.ListUnfinished:empty {
+    margin-bottom: 10px;
 }

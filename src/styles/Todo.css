@@ -21,7 +21,7 @@
     position: relative;
     left: 0px;
 
-    transition: all 0.25s;
+    transition: all 0.35s;
 }
 
 .Todo h2 {
@@ -118,6 +118,12 @@
 /* ------------------------------------------------------------------------------------------------------------ */
 
 .Todo.entered {
+    position: relative;
+    left: -90vw;
+    opacity: 0;
+}
+
+.Todo.hide {
     position: relative;
     left: -90vw;
     opacity: 0;

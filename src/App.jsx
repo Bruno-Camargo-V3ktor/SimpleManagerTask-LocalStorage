@@ -11,9 +11,11 @@ function App() {
       <main>
 
         <Card>
+
           <StorageProvider>
             <TodoList />
           </StorageProvider>
+          
         </Card>
 
       </main>

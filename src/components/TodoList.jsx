@@ -50,7 +50,6 @@ const TodoList = (props) => {
 
     function updateList(t) {
         setTodosMemory(t)
-        console.log(t);
     }
 
     //Render
