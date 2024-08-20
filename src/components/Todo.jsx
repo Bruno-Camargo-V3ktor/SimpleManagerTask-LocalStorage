@@ -6,17 +6,24 @@ import { AiFillCalendar, AiFillCheckSquare, AiFillDelete, AiOutlineBorder, AiOut
 const Todo = (props) => {
 
     //Atributos
-    const { title, id } = props
+    const { title, id, done, date  } = props
     const dateRef = useRef(null);
 
     //States
-    const [isDone, setIsDone] = useState(false);
-    const [date, setDate] = useState( new Date() );
+    const [isDone, setIsDone] = useState( done );
+    const [targetDate, setTargetDate] = useState( date );
 
     //Métodos
     function updateDate(time) {
-        const [year, month, day] = time.split('-');
-        setDate( new Date( `${year}-${month}-${day}T12:01:00` ) )
+      const [year, month, day] = time.split('-');
+      const newDate = new Date( `${year}-${month}-${day}T12:01:00` )
+      setTargetDate( newDate )
+      props.onUpdateTodo( {title, id, done: isDone, date: newDate} )
+    }
+
+    function updateIsDone(_done) {
+      setIsDone(_done)
+      props.onUpdateTodo( {title, id, done: _done, date: targetDate} )
     }
 
     //Render
@@ -53,7 +60,7 @@ const Todo = (props) => {
                       type='date'
                     />
 
-                    <span>{ date.toLocaleDateString() }</span>
+                    <span>{ targetDate.toLocaleDateString() }</span>
                 </div>
             </div>
             
@@ -61,7 +68,7 @@ const Todo = (props) => {
 
              ?  <div className='buttonsContainer' >
                     <AiFillCheckSquare className='icon icon-check' color='black' size={25} 
-                      onClick={ () => { setIsDone( !isDone ) } }
+                      onClick={ () => { updateIsDone( !isDone ) } }
                     />
 
                     <AiFillDelete className='icon icon-delete' color='black' size={25} 
@@ -71,7 +78,7 @@ const Todo = (props) => {
 
              :  <div className='buttonsContainer' >
                     <AiOutlineBorder className='icon icon-check' color='white' size={25} 
-                      onClick={ () => { setIsDone( !isDone ) } }
+                      onClick={ () => { updateIsDone( !isDone ) } }
                     />
 
                     <AiOutlineDelete className='icon icon-delete' color='white' size={25} 

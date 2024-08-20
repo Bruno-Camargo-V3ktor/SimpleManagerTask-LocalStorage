@@ -1,6 +1,6 @@
 import './styles/App.css'
 
-
+import StorageProvider from './contexts/StorageContext';
 import Card from './components/Card';
 import TodoList from './components/TodoList';
 
@@ -10,8 +10,10 @@ function App() {
 
       <main>
 
-        <Card showTitle={false} >
-          <TodoList />
+        <Card>
+          <StorageProvider>
+            <TodoList />
+          </StorageProvider>
         </Card>
 
       </main>

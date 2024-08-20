@@ -2,36 +2,56 @@ import '../styles/TodoList.css'
 import { AiOutlinePlus } from 'react-icons/ai';
 
 import Todo from './Todo';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { StorageContext } from '../contexts/StorageContext';
 
 
 const TodoList = (props) => {
 
     //Atributos
+    const storageContext = useContext(StorageContext)
+    const { getTodos: getTodosMemory, setTodos: setTodosMemory } = storageContext;
+    
 
     //Estados
-    const [todos, setTodos] = useState( [
-        {title: "Aprender React", id: 0}
-    ] );
-
+    const [todos, setTodos] = useState( [] );
     const [inputTask, setInputTask] = useState("");
+
+    // Effect
+    useEffect( () => { setTodos( getTodosMemory() ) }, [getTodosMemory] )
 
     //Métodos
     function deleteTodo(id) {
         const t = [...todos].filter( (todo) => todo.id !== id )
+        
         setTodos(t)
+        updateList(t)
     }
 
     function createTodo(name) {
         if(name === "") return
-
-        console.log(name);
         
         const t = [...todos]
-        t.push( {title: name, id: t.length} )
+        t.push( {title: name, id: t.length, date: new Date(), done: false} )
 
         setTodos(t)
         setInputTask("")
+
+        updateList(t)
+    }
+
+    function updateTodo(todo) {
+        const td = [...todos]
+        td[ todo.id ] = todo;
+
+        console.log(todo);
+        setTodos(td)
+        updateList(td)
+    }
+
+    function updateList(t) {
+        setTodosMemory(t)
+        console.log(t);
     }
 
     //Render
@@ -55,7 +75,7 @@ const TodoList = (props) => {
             </div>
 
             <div className='ListContainer'>
-                { todos.map( (todo) => <Todo key={todo.id} {...todo} onDeleteTodo={ deleteTodo } /> ) }
+                { todos.map( (todo) => <Todo key={todo.id} {...todo} onDeleteTodo={ deleteTodo } onUpdateTodo= {updateTodo}  /> ) }
             </div>
 
         </div>
