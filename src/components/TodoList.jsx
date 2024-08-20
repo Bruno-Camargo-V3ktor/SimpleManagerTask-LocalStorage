@@ -4,6 +4,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import Todo from './Todo';
 import { useContext, useEffect, useState } from 'react';
 import { StorageContext } from '../contexts/StorageContext';
+import { toBeDisabled } from '@testing-library/jest-dom/matchers';
 
 
 const TodoList = (props) => {
@@ -32,7 +33,7 @@ const TodoList = (props) => {
         if(name === "") return
         
         const t = [...todos]
-        t.push( {title: name, id: t.length, date: new Date(), done: false} )
+        t.push( {title: name, id: t.length+1, date: new Date(), done: false} )
 
         setTodos(t)
         setInputTask("")
@@ -41,10 +42,8 @@ const TodoList = (props) => {
     }
 
     function updateTodo(todo) {
-        const td = [...todos]
-        td[ todo.id ] = todo;
+        const td = [...todos].map( (t) => t.id===todo.id ?  todo : t)
 
-        console.log(todo);
         setTodos(td)
         updateList(td)
     }
@@ -75,7 +74,15 @@ const TodoList = (props) => {
             </div>
 
             <div className='ListContainer'>
-                { todos.map( (todo) => <Todo key={todo.id} {...todo} onDeleteTodo={ deleteTodo } onUpdateTodo= {updateTodo}  /> ) }
+
+                <div className='ListUnfinished'>
+                    { todos.map( (todo) => !todo.done ? <Todo key={todo.id} {...todo} onDeleteTodo={ deleteTodo } onUpdateTodo= {updateTodo}  /> : false) }
+                </div>
+
+                <div className='ListFinished'>
+                    { todos.map( (todo) => todo.done ? <Todo key={todo.id} {...todo} onDeleteTodo={ deleteTodo } onUpdateTodo= {updateTodo}  /> : false)  }
+                </div>
+
             </div>
 
         </div>

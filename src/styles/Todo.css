@@ -17,7 +17,11 @@
 
     margin-bottom: 15px;
 
-    transition: all 0.2s;
+    opacity: 1;
+    position: relative;
+    left: 0px;
+
+    transition: all 0.25s;
 }
 
 .Todo h2 {
@@ -29,6 +33,8 @@
     color: white;
 
     margin-bottom: 12px;
+
+    transition: all 0.25s;
 }
 
 .Todo .icon {
@@ -97,7 +103,6 @@
 
 .Todo.done {
     background-color: white;
-    
 }
 
 .Todo.done h2 {
@@ -112,7 +117,15 @@
 
 /* ------------------------------------------------------------------------------------------------------------ */
 
-.Todo.done.destroy {
+.Todo.entered {
+    position: relative;
+    left: -90vw;
+    opacity: 0;
+}
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+.Todo.destroy {
     scale: 0.5;
     opacity: 0;
 }

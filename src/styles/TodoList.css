@@ -1,8 +1,9 @@
 .TodoListContainer {
     display: flex;
     flex-direction: column;
-    width: 100%;
     flex: 1;
+
+    /*background-color: red;*/
 }
 
 .BtnAddContainer {
@@ -68,6 +69,23 @@
 
     justify-content: flex-start;
     align-items: flex-start;
+
     overflow-y: auto;
     overflow-x: hidden;
+
+    /*background-color: aqua;*/
+}
+
+.ListUnfinished, .ListFinished  {
+    display: flex;
+    flex-direction: column;
+    
+
+    width: 100%;
+    height: auto;
+}
+
+
+.ListUnfinished:last-child {
+    margin-bottom: 50px;
 }

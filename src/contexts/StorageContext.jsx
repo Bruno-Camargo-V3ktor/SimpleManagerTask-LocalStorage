@@ -10,13 +10,13 @@ const StorageProvider = (props) => {
     // Effect
     useEffect( () => {
         const t = JSON.parse( localStorage.getItem('todos') )
-        setTodos( ( t.map( (td) => {td.date = new Date(td.date); return td }) ) )
+        console.log(t);
+        setTodos( ( t !== null ? t.map( (td) => { td.date = new Date(td.date); return td } ) : []) )
     })
 
     // Métodos
     function getTodos() { return [...todos] }
     function setTodos( newTodos ) {
-        //console.log( localStorage.getItem('todos') );
 
         if(newTodos === null) {
             localStorage.setItem('todos', '[]')

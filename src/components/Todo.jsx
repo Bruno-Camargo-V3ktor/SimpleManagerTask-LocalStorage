@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import '../styles/Todo.css'
 import { AiFillCalendar, AiFillCheckSquare, AiFillDelete, AiOutlineBorder, AiOutlineCalendar, AiOutlineDelete } from 'react-icons/ai';
 
@@ -13,13 +13,14 @@ const Todo = (props) => {
     const [isDone, setIsDone] = useState( done );
     const [targetDate, setTargetDate] = useState( date );
     const [isDestroy, setIsDestroy] = useState( false );
+    const [todoClasses, setTodoClasses] = useState( ['entered'] )
 
     //Métodos
     function onDestroy() {
       setIsDestroy(true)
       setTimeout(() => {
         props.onDeleteTodo(id)
-      }, 300);
+      }, 250);
     }
 
     function updateDate(time) {
@@ -31,13 +32,32 @@ const Todo = (props) => {
 
     function updateIsDone(_done) {
 
+      setTimeout(() => {
+        setTodoClasses( ['entered'] )  
+      }, 100);
+
+      setTimeout(() => {
+        setTodoClasses( [] )
+        props.onUpdateTodo( {title, id, done: isDone, date: targetDate} )
+      }, 400);
+
       setIsDone(_done)
-      props.onUpdateTodo( {title, id, done: _done, date: targetDate} )
     }
 
     function getClassesTodo() {
-      return 'Todo'.concat( `${ isDone ? ' done' : '' }`, `${ isDestroy ? ' destroy' : '' }`)
+      return 'Todo'.concat( 
+          `${ isDone ? ' done' : '' }`,
+          `${ isDestroy ? ' destroy' : '' }`,
+          ' ' + todoClasses.join(' ')
+        )
     }
+
+    // Effect
+    useEffect( () => {
+      setTodoClasses( [] )
+        console.log("Effect");
+        
+    }, [setTodoClasses] )
 
     //Render
     return (
