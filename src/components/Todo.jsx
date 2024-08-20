@@ -38,7 +38,7 @@ const Todo = (props) => {
 
       setTimeout(() => {
         setTodoClasses( [] )
-        props.onUpdateTodo( {title, id, done: isDone, date: targetDate} )
+        props.onUpdateTodo( {title, id, done: _done, date: targetDate} )
       }, 400);
 
       setIsDone(_done)
