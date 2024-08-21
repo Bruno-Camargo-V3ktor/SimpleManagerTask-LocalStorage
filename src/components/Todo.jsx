@@ -35,12 +35,11 @@ const Todo = (props) => {
     function updateIsDone(_done) {
 
       setTodoClasses( ['hide'] )  
+      setIsDone(_done)
 
       setTimeout(() => {
         props.onUpdateTodo( {title, id, done: _done, date: targetDate} )
       }, 400);
-      
-      //props.onUpdateTodo( {title, id, done: _done, date: targetDate} )
     }
 
     function getClassesTodo() {

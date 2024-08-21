@@ -65,6 +65,8 @@
     flex-direction: column;
     flex: 1;
 
+    min-height: calc( 614px - 8.15rem );
+    max-height: calc( 80vh - 8.15rem );
     margin-top: 50px;
 
     justify-content: flex-start;
@@ -73,7 +75,7 @@
     overflow-y: auto;
     overflow-x: hidden;
 
-    /*background-color: aqua;*/
+    scrollbar-width: none;
 }
 
 .ListUnfinished, .ListFinished  {
