@@ -21,7 +21,7 @@
     position: relative;
     left: 0px;
 
-    transition: all 0.35s;
+    transition: all 0.5s
 }
 
 .Todo h2 {
@@ -34,7 +34,7 @@
 
     margin-bottom: 12px;
 
-    transition: all 0.25s;
+    transition: all 0.5s;
 }
 
 .Todo .icon {
