@@ -25,7 +25,7 @@
 }
 
 .Todo h2 {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: bold;
     font-family: Hanken Grotesk;
 
@@ -61,7 +61,7 @@
 
 .calendarContainer span {
 
-    font-size: 15px;
+    font-size: 1rem;
     font-family: Hanken Grotesk;
     text-align: center;
     color: white;

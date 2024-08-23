@@ -20,3 +20,15 @@
     display: flex;
     flex: 1;
 }
+
+@media ( max-width: 460px ) {
+
+    html {
+        font-size: 80%;
+    }
+
+    .CardContainer {
+        min-width: 90vw;
+        min-height: 100%;
+    }
+}

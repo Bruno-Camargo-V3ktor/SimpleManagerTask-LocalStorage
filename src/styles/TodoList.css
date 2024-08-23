@@ -27,7 +27,7 @@
 
     font-family: Hanken Grotesk;
     font-style: italic;
-    font-size: 17px;
+    font-size: 1rem;
     font-weight: bold;
     
     transition: border-bottom 0.1s;
@@ -65,8 +65,8 @@
     flex-direction: column;
     flex: 1;
 
-    min-height: calc( 614px - 130px );
-    max-height: calc( 80vh - 130px );
+    min-height: calc( 614px - 135px );
+    max-height: calc( 80vh - 135px );
     margin-top: 50px;
 
     justify-content: flex-start;
@@ -94,4 +94,12 @@
 
 .ListUnfinished:empty {
     margin-bottom: 10px;
+}
+
+@media ( max-width: 460px ) {
+
+    .ListContainer {
+        min-height: calc( 100% - 200px );
+    }
+
 }
